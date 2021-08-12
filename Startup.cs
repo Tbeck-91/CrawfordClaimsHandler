@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 using ClaimsHandler.DataContext;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace ClaimsHandler
 {
@@ -25,6 +27,9 @@ namespace ClaimsHandler
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDbContext<InterviewContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("InterviewContext")));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
