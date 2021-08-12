@@ -10,7 +10,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -26,8 +25,6 @@
   <p align="center">
     Prototype Claim Handler made for Crawford developer assessment
     <br />
-    <a href="https://github.com/Tbeck-91/CrawfordClaimsHandler/master/README.md"><strong>Explore the docs »</strong></a>
-
   </p>
 </p>
 
