@@ -70,6 +70,12 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
+**********************************************************
+MAKE SURE TO SET THE CORRECT CONNECTION STRING IN APPSETTINGS.JSON!!!!
+CONNECTION STRING WAS KEPT OFF THE REPOSITORY FOR SECURITY PURPOSES
+**********************************************************
+
+
 Visual studio 2019 with latest dot net core packages (including asp.net core 5)
 running IIS express
 
