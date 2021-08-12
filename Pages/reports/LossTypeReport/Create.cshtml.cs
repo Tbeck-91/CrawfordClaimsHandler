@@ -13,14 +13,21 @@ namespace ClaimsHandler.Pages.reports.LossTypeReport
     public class CreateModel : PageModel
     {
         private readonly ClaimsHandler.DataContext.InterviewContext _context;
+        private readonly Microsoft.AspNetCore.Http.IHttpContextAccessor _HttpContextAccessor;
 
-        public CreateModel(ClaimsHandler.DataContext.InterviewContext context)
+        public CreateModel(ClaimsHandler.DataContext.InterviewContext context, Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor)
         {
             _context = context;
+            _HttpContextAccessor = HttpContextAccessor;
         }
 
         public IActionResult OnGet()
         {
+            if (!_HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("../../Account/AccessDenied");
+            }
+
             return Page();
         }
 

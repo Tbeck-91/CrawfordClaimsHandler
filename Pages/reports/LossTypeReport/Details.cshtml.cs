@@ -13,10 +13,12 @@ namespace ClaimsHandler.Pages.reports.LossTypeReport
     public class DetailsModel : PageModel
     {
         private readonly ClaimsHandler.DataContext.InterviewContext _context;
+        private readonly Microsoft.AspNetCore.Http.IHttpContextAccessor _HttpContextAccessor;
 
-        public DetailsModel(ClaimsHandler.DataContext.InterviewContext context)
+        public DetailsModel(ClaimsHandler.DataContext.InterviewContext context, Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor)
         {
             _context = context;
+            _HttpContextAccessor = HttpContextAccessor;
         }
 
         public LossType LossType { get; set; }
@@ -26,6 +28,11 @@ namespace ClaimsHandler.Pages.reports.LossTypeReport
             if (id == null)
             {
                 return NotFound();
+            }
+
+            if (!_HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("../../Account/AccessDenied");
             }
 
             LossType = await _context.LossTypes.FirstOrDefaultAsync(m => m.LossTypeId == id);
